@@ -14,7 +14,7 @@ import argparse
 from models import *
 from utils import progress_bar
 
-
+torch.manual_seed(0)
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
 parser.add_argument('--lr', default=0.1, type=float, help='learning rate')
 parser.add_argument('--resume', '-r', action='store_true',
@@ -42,7 +42,7 @@ transform_test = transforms.Compose([
 trainset = torchvision.datasets.CIFAR10(
     root='./data', train=True, download=True, transform=transform_train)
 trainloader = torch.utils.data.DataLoader(
-    trainset, batch_size=128, shuffle=True, num_workers=2)
+    trainset, batch_size=128, shuffle=False, num_workers=1)
 
 print("train loader size: ", trainloader.__len__())
 trainloader_part1 = []
