@@ -44,6 +44,7 @@ trainset = torchvision.datasets.CIFAR10(
 trainloader = torch.utils.data.DataLoader(
     trainset, batch_size=128, shuffle=True, num_workers=2)
 
+print("train loader shape: ", trainloader.dataset.__len__())
 testset = torchvision.datasets.CIFAR10(
     root='./data', train=False, download=True, transform=transform_test)
 testloader = torch.utils.data.DataLoader(
@@ -144,12 +145,12 @@ def test(epoch):
         # }
         if not os.path.isdir('checkpoint'):
             os.mkdir('checkpoint')
-        print(net.state_dict())
+        # print(net.state_dict())
         new_state_dict = {}
         # module.
         for k, v in net.state_dict().items():
             new_state_dict[k[7:]] = v
-        print(new_state_dict)
+        # print(new_state_dict)
         torch.save(new_state_dict, './checkpoint/ckpt.pth')
         best_acc = acc
 
