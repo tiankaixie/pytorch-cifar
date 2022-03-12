@@ -44,18 +44,18 @@ trainset = torchvision.datasets.CIFAR10(
 trainloader = torch.utils.data.DataLoader(
     trainset, batch_size=128, shuffle=False, num_workers=1)
 
-print("train loader size: ", trainloader.__len__())
-trainloader_part1 = []
-trainloader_part2 = []
+# print("train loader size: ", trainloader.__len__())
+# trainloader_part1 = []
+# trainloader_part2 = []
 
-for batch_idx, (inputs, targets) in enumerate(trainloader):
-    if batch_idx < 150:
-        trainloader_part1.append((inputs, targets))
-    else:
-        trainloader_part2.append((inputs, targets))
+# for batch_idx, (inputs, targets) in enumerate(trainloader):
+#     if batch_idx < 150:
+#         trainloader_part1.append((inputs, targets))
+#     else:
+#         trainloader_part2.append((inputs, targets))
 
 
-trainloader = trainloader_part1
+# trainloader = trainloader_part1
 testset = torchvision.datasets.CIFAR10(
     root='./data', train=False, download=True, transform=transform_test)
 testloader = torch.utils.data.DataLoader(
